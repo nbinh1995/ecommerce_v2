@@ -52,7 +52,14 @@ class LoginController extends Controller
             //  logout
             Auth::logout();
             // message
-            return redirect()->route('login')->withFlashDanger(__('auth.delete_user'));
+            return redirect()->route('login')->withFlashDanger(__('delete_user'));
+        }
+
+        if (!$user->isAdmin()) {
+            //  logout
+            Auth::logout();
+            // message
+            return redirect()->route('login')->withFlashDanger(__('user_not_admin'));
         }
 
         // update last login

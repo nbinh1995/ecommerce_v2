@@ -2,12 +2,16 @@
 
 namespace App;
 
+use App\Models\Bill;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
     use Notifiable;
 
     /**
@@ -36,4 +40,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin()
+    {
+        return Auth::user()->is_admin == 1;
+    }
+
+    public function bills()
+    {
+        return $this->hasMany(Bill::class, 'user_id', 'id')->orderBy('id', 'DESC');
+    }
 }
