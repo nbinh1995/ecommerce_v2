@@ -1,0 +1,35 @@
+/*==================
+    Menu List
+=================*/
+@keyframes moveUp {
+  from {
+    top: 120%;
+  }
+  to {
+    top: 100%;
+  }
+}
+@keyframes moveUp_gray {
+  from {
+    top: 175%;
+  }
+  to {
+    top: 145%;
+  }
+}
+@keyframes moveRightUp {
+  from {
+    top: 20%;
+  }
+  to {
+    top: 0;
+  }
+}
+/*==================
+    Come in List
+=================*/
+@keyframes come-in {
+  to {
+    transform: translateY(0);
+  }
+}

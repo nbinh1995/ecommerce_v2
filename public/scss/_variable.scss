@@ -1,0 +1,31 @@
+/*============= 
+Color Variable
+==============*/
+$color-primary-light: rgb(244, 245, 249);
+$color-primary-normal: #7d79f2;
+$color-primary-bold: #4f45e3;
+
+$color-black: #0d0d0d;
+$color-blue: #a6f3ed;
+$color-red: #dc3545;
+$color-green: #28a745;
+/*============= 
+Font Variable
+==============*/
+$rate: 1.618;
+$base: 16px;
+// small
+$sm-base: $base / $rate;
+$xs-base: $sm-base / $rate;
+// large
+$md-base: $base * $rate;
+$lg-base: $md-base * $rate;
+$xl-base: $lg-base * $rate;
+/*=================
+Breakpoint Variable
+==================*/
+$breakpoint-xs: 0px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
