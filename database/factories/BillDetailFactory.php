@@ -6,7 +6,5 @@ use App\Models\BillDetail;
 use Faker\Generator as Faker;
 
 $factory->define(BillDetail::class, function (Faker $faker) {
-    return [
-        //
-    ];
+    return [];
 });

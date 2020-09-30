@@ -14,15 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
 Route::group([
     'prefix' => 'dashboard',
-    'namespace' => 'Admin'
+    'namespace' => 'Admin',
+    'middleware' => 'isAdmin'
 ], function () {
+    Route::get('/', 'DashBoardController')->name('dashboard');
 });
 
 Route::group([
     'namespace' => 'Site'
 ], function () {
-    Route::get('/', 'HomeController@index')->name('home');
-    Auth::routes();
+    Route::get('/', 'HomeController')->name('home');
+    Route::get('/shop', 'ShopController')->name('shop');
+    Route::get('/shop/{product}', 'DetailController')->name('detail');
+    Route::get('/checkout', 'CheckoutController')->name('checkout');
+    Route::get('/cart', 'CartController')->name('cart');
 });

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashBoardController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -15,6 +15,6 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('sites.home');
+        //
     }
 }

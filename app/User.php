@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return Auth::user()->is_admin == 1;
+        return $this->is_admin == 1;
     }
 
     public function bills()
