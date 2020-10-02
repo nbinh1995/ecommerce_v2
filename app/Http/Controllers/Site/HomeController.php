@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,6 +16,7 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('sites.home');
+        $products = Product::orderBy('created_at', 'DESC')->take(6)->get();
+        return view('sites.home', compact('products'));
     }
 }

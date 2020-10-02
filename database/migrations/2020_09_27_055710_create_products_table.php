@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->double('price');
             $table->text('image');
+            $table->string('slug')->nullable();
             $table->tinyInteger('is_new')->default(0);
             $table->timestamps();
             $table->softDeletes();

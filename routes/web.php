@@ -28,7 +28,8 @@ Route::group([
 ], function () {
     Route::get('/', 'HomeController')->name('home');
     Route::get('/shop', 'ShopController')->name('shop');
-    Route::get('/shop/{product}', 'DetailController')->name('detail');
+    Route::get('/shop/{category}', 'ShopController')->name('shop.category');
+    Route::get('/shop/{category}/{product}', 'DetailController')->name('detail');
     Route::get('/checkout', 'CheckoutController')->name('checkout');
     Route::get('/cart', 'CartController')->name('cart');
 });

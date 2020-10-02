@@ -95,109 +95,22 @@
                         </div>
                         <div class="col-12">
                             <section class="shop-content">
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
-                                <figure class="box-product">
-                                    <img src="https://via.placeholder.com/347x246" alt="" />
-                                    <h3><a href="">Name Product 1</a></h3>
-                                    <p>Description product</p>
-                                    <p class="box-product__price">$50</p>
-                                </figure>
+                                @foreach ($products as $item)
+                                <div>
+                                    <a href="{{route('detail',['product'=>$item,'category'=>$item->category])}}">
+                                        <figure class="box-product">
+                                            <img src="{{$item->image}}" alt="" />
+                                            <h3 class="text-line"><a href="">{{$item->name}}</a></h3>
+                                            <p class="text-line">{{$item->description}}</p>
+                                            <p class="box-product__price">{{$item->showPrice('VND',false)}}</p>
+                                        </figure>
+                                    </a>
+                                </div>
+                                @endforeach
                             </section>
                         </div>
                         <div class="col-12 center">
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#" class="active">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
+                            {{$products->appends(request()->query())->render('components.pagination')}}
                         </div>
                     </div>
                 </div>

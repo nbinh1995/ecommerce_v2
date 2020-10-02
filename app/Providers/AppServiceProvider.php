@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(['sites.home', 'sites.cart', 'sites.checkout', 'sites.shopdetail', 'sites.shop'], 'App\Http\ViewComposers\CategoryComposer');
     }
 }

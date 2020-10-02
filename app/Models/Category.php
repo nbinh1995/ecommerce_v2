@@ -15,4 +15,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id')->orderBy('id', 'DESC');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

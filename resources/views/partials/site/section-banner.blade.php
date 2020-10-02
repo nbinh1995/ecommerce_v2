@@ -11,7 +11,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
                     </p>
-                    <a href="" class="btn-default">shop now</a>
+                    <a href="{{route('shop')}}" class="btn-default">shop now</a>
                 </div>
             </div>
         </div>

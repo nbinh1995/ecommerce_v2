@@ -56,6 +56,11 @@ figure {
     font-weight: 200;
   }
 }
+.text-line {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 /* ==============
      box-input
 ==============*/
@@ -513,21 +518,26 @@ a {
 .pagination {
   display: inline-flex;
   margin: $sm-base 0;
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+  }
 }
 
-.pagination a {
+.pagination li {
   color: black;
   padding: 7px 16px;
   text-decoration: none;
 }
 
-.pagination a.active {
+.pagination li.active {
   background-color: $color-primary-normal;
   color: white;
   border-radius: 50%;
 }
 
-.pagination a:hover:not(.active) {
+.pagination li:hover:not(.active) {
   background-color: #ddd;
   border-radius: 50%;
 }

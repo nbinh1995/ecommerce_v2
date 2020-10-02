@@ -3,11 +3,12 @@
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
 
-    protected $categories = ['Men', 'Women', 'Children'];
+    protected $categories = ['new arrivals', 'men', 'women', 'children'];
     /**
      * Seed the application's database.
      *
@@ -17,8 +18,8 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
         foreach ($this->categories as  $value) {
-            Category::create(['name' => $value]);
+            Category::create(['name' => $value, 'slug' => Str::slug($value)]);
         }
-        factory(Product::class, 20)->create();
+        factory(Product::class, 30)->create();
     }
 }

@@ -26,4 +26,14 @@ class Product extends Model
     {
         return $this->hasMany(BillDetail::class, 'product_id', 'id');
     }
+
+    public function showPrice(string $currency, bool $left_right)
+    {
+        return $left_right ? $currency . ' ' . number_format($this->price, 0, ',', ',')  : number_format($this->price, 0, ',', ',') . ' ' . $currency;
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

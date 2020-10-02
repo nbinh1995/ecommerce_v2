@@ -4,8 +4,9 @@
 
 @endpush
 @push('bottom')
-<script src="Public/Script/input_amount.js"></script>
+<script src="{{asset("Script/input_amount.js")}}"></script>
 <script src="{{asset("js/Script/lazyloading_home.js")}}"></script>
+<script src="{{asset("js/Script/slide.js")}}"></script>
 @endpush
 @section('content')
 @include('partials.site.section-tree',['root'=>'Home \ ','page'=>'Detail'])
