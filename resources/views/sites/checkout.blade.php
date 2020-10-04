@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@section('title','CHECKOUT')
+@section('title')
+@include('partials.title',['title'=>'CHECKOUT'])
+@endsection
 @push('top')
 
 @endpush

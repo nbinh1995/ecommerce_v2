@@ -1,77 +1,61 @@
 @extends('layouts.app')
-
+@push('top')
+<link rel="stylesheet" href="{{asset('css/register.css')}}">
+<style>
+    .section-tree {
+        margin-bottom: 0;
+    }
+</style>
+@endpush
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+@include('partials.site.section-tree',['root'=> 'Home \ ','page'=> 'Register'])
+<form class="reg-container" action="{{ route('register') }}" method="POST">
+    @csrf
+    <h1>{{ __('create an account') }}</h1>
+    <div class="reg-wrap">
+        <div class="reg-wrap-left">
+            <input type="email" name="email" placeholder="{{ __('E-Mail Address') }}l" required>
+            @error('email')
+            <div class="err" role="alert">
+                <strong>{{ $message }}</strong>
             </div>
+            @enderror
+            <input type="password" name="password" placeholder="Password" pattern="(?=.*[a-zA-Z0-9]).{8,}"
+                title="Mật khẩu có ít nhất 8 kí tự và không có kí tự đặc biệt!">
+            @error('password')
+            <div class="err" role="alert">
+                <strong>{{ $message }}</strong>
+            </div>
+            @enderror
+            <input type="password" name="password_confirmation" placeholder="Confirm Password"
+                pattern="(?=.*[a-zA-Z0-9]).{8,}" required
+                title="Mật khẩu có ít nhất 8 kí tự và không có kí tự đặc biệt!">
+        </div>
+        <div class="reg-wrap-right">
+            <input type="text" name="name" placeholder="{{ __('FullName') }}" required>
+            @error('name')
+            <div class="err" role="alert">
+                <strong>{{ $message }}</strong>
+            </div>
+            @enderror
+            <input type="text" name="address" placeholder="{{__('Address')}}" required>
+            @error('address')
+            <div class="err" role="alert">
+                <strong>{{ $message }}</strong>
+            </div>
+            @enderror
+            <input type="tel" name='phone' placeholder="{{__('PhoneNumber')}}" pattern="^0[0-9]{9,10}$" required
+                title="Không phải số điện thoại!">
+            @error('phone')
+            <div class="err" role="alert">
+                <strong>{{ $message }}</strong>
+            </div>
+            @enderror
         </div>
     </div>
-</div>
+    <div class="reg-container-btn">
+        <input type="submit" class="btn-default" value="{{ __('Register') }}">
+    </div>
+</form>
+<div class="section-box container-fluid border-b"></div>
 @endsection

@@ -1,0 +1,55 @@
+.reg-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+}
+.reg-container h1 {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    margin: 2rem 0;
+    font-weight: 500;
+}
+.reg-wrap,
+.reg-wrap-left,
+.reg-wrap-right {
+    display: flex;
+    width: 100%;
+}
+.reg-wrap-left,
+.reg-wrap-right {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reg-wrap input:not([type="submit"]) {
+    width: 90%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #dddddd;
+    outline: none;
+}
+.err {
+    color: red;
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+.reg-container-btn {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+}
+/* .reg-container-btn input{
+    background: #555;
+    color: #FFF;
+    border-bottom: 4px solid #1D1C1C;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+} */
+.reg-container-btn p {
+    font-size: 0.8rem;
+    padding: 0 1rem;
+}
+.reg-container-btn input {
+    cursor: pointer;
+}

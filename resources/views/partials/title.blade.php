@@ -1,0 +1,1 @@
+<title>SHOPPERS | {{__($title)}}</title>

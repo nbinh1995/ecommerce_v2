@@ -1,0 +1,66 @@
+.login-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding-bottom: 30px;
+}
+.login-wrap h1 {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    /* margin: 2rem 0; */
+    font-weight: 500;
+}
+.err {
+    color: red;
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+.login-wrap-left,
+.login-wrap-right {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-wrap-left {
+    align-items: flex-start;
+    padding: 0 2rem;
+}
+.login-wrap-left h3 {
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+.login-wrap-left p {
+    color: #999;
+    font-size: 0.8125em;
+    line-height: 1.8em;
+}
+.login-wrap-right .link {
+    color: #999;
+    font-size: 0.8125em;
+    line-height: 1.8em;
+    text-decoration: underline;
+}
+.login-wrap-right a:hover {
+    text-decoration: none;
+}
+.login-wrap input[type="email"],
+input[type="password"] {
+    width: 90%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid #dddddd;
+    outline: none;
+}
+.login-container-btn {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+.login-container-btn label,
+.login-container-btn input {
+    cursor: pointer;
+}

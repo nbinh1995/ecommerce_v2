@@ -10,23 +10,36 @@
                 </div>
             </div>
             <div class="col-4 center">
-                <a href="#">
+                <a href="{{route('home')}}">
                     <div class="box-logo">
                         <h3 class="box-logo__text">shoppers</h3>
                     </div>
                 </a>
             </div>
             <div class="col-4 right">
-                <div class="btn-icon">
+                @guest
+                <a href="{{route('login')}}" class="btn-icon">
                     <i class="fas fa-user"></i>
-                </div>
-                <div class="btn-icon">
+                </a>
+                @else
+                <span>
+                    {{ Auth::user()->name }}
+                </span>
+                <a class="btn-icon" href="{{ route('logout') }}" onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                    @csrf
+                </form>
+                <a href="#" class="btn-icon">
                     <i class="far fa-heart"></i>
-                </div>
-                <div class="btn-icon btn-icon--badge">
+                </a>
+                @endguest
+                <a href="{{route('cart')}}" class="btn-icon btn-icon--badge">
                     <i class="fas fa-shopping-cart"></i>
-                    <small>2</small>
-                </div>
+                    <small class="badge">{{session('cart')['count'] ?? 0}}</small>
+                </a>
             </div>
         </div>
     </div>
@@ -36,12 +49,13 @@
             <div class="col-12 center">
                 <nav>
                     <ul class="menu-list">
-                        <li class="menu-list__item active">
+                        <li class="menu-list__item @isset($item_1) active @endisset">
                             <a href="{{route('home')}}">home</a>
                         </li>
-                        <li class="menu-list__item"><a href="{{route('shop')}}">shop</a></li>
-                        <li class="menu-list__item"><a href="">catalogue <i class="fas fa-angle-down"
-                                    style="opacity: 0.5"></i></a>
+                        <li class="menu-list__item @isset($item_2) active @endisset"><a
+                                href="{{route('shop')}}">shop</a></li>
+                        <li class="menu-list__item @isset($item_3) active @endisset"><a href="">catalogue <i
+                                    class="fas fa-angle-down" style="opacity: 0.5"></i></a>
                             <ul class="menu-list menu-list--child">
                                 @php
                                 $new = $categories[0];
@@ -54,7 +68,8 @@
                                 @endforeach
                             </ul>
                         </li>
-                        <li class="menu-list__item"><a href="{{route('shop.category',['category'=>$new])}}">new
+                        <li class="menu-list__item @isset($item_4) active @endisset"><a
+                                href="{{route('shop.category',['category'=>$new])}}">new
                                 arrivals</a></li>
                     </ul>
                 </nav>

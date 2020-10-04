@@ -27,9 +27,16 @@ Route::group([
     'namespace' => 'Site'
 ], function () {
     Route::get('/', 'HomeController')->name('home');
+
     Route::get('/shop', 'ShopController')->name('shop');
     Route::get('/shop/{category}', 'ShopController')->name('shop.category');
     Route::get('/shop/{category}/{product}', 'DetailController')->name('detail');
+
     Route::get('/checkout', 'CheckoutController')->name('checkout');
-    Route::get('/cart', 'CartController')->name('cart');
+
+    Route::get('/cart', 'CartController@index')->name('cart');
+    Route::post('/cart/add', 'CartController@addCart')->name('cart.add');
+    Route::post('/cart/update', 'CartController@updateCart')->name('cart.update');
+    Route::get('/cart/clear', 'CartController@clearCart')->name('cart.clear');
+    Route::get('/cart/remove/{id}', 'CartController@removeCart')->name('cart.remove');
 });

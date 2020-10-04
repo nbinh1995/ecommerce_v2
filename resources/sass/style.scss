@@ -609,6 +609,7 @@ a {
     display: flex;
     & .size-item {
       padding: $xs-base;
+      cursor: pointer;
     }
   }
   & .input-group {

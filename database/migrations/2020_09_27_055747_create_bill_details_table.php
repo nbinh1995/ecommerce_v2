@@ -20,9 +20,11 @@ class CreateBillDetailsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->double('price');
             $table->integer('amount');
+            $table->unsignedBigInteger('size_id');
             $table->double('total_detail');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('bill_id')->references('id')->on('bills')->onDelete('cascade');
         });

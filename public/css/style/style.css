@@ -1270,6 +1270,7 @@ a {
 
 .section-detail__size .size-item {
   padding: 6.1117129451px;
+  cursor: pointer;
 }
 
 .section-detail .input-group {

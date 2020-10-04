@@ -2,9 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-  <title>SHOPPERS | @yield('title')</title>
   @include('partials.site.head')
-
+  @yield('title')
 </head>
 
 <body>

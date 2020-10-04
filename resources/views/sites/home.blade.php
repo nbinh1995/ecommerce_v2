@@ -1,5 +1,10 @@
 @extends('layouts.app')
-@section('title','HOME')
+@section('title')
+@php
+$item_1 = "actice";
+@endphp
+@include('partials.title',['title'=>'HOME'])
+@endsection
 @push('top')
 
 @endpush
