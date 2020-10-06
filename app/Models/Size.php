@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Size extends Model
 {
+    const PRIMARY_KEY_TABLE = 'id';
+
     use SoftDeletes;
     protected $table = 'sizes';
     protected $guarded = [];
@@ -19,6 +21,6 @@ class Size extends Model
 
     public function billDetails()
     {
-        return $this->hasMany(BillDetail::class, 'size_id', 'id');
+        return $this->hasMany(BillDetail::class, BillDetail::FOREIGN_KEY_SIZE, self::PRIMARY_KEY_TABLE);
     }
 }

@@ -8,7 +8,7 @@
 </style>
 @endpush
 @section('content')
-@include('partials.site.section-tree',['root'=>'Home \ ','page'=>'Login'])
+@include('partials.common.section-tree',['root'=>'Home \ ','page'=>'Login'])
 <div class="login-wrap">
     <div class="login-wrap-left">
         <h1>NEW CUSTOMERS</h1>

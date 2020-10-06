@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class DatabaseSeeder extends Seeder
 {
 
-    protected $categories = ['new arrivals', 'men', 'women', 'children'];
+    protected $categories = ['men', 'women', 'children'];
     protected $sizes = ['Small', 'Medium', 'Large', 'Extra Large'];
     /**
      * Seed the application's database.

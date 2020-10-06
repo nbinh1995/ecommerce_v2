@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
+    const PRIMARY_KEY_TABLE = 'id';
+
     use SoftDeletes;
     use Notifiable;
 
@@ -48,6 +50,6 @@ class User extends Authenticatable
 
     public function bills()
     {
-        return $this->hasMany(Bill::class, 'user_id', 'id')->orderBy('id', 'DESC');
+        return $this->hasMany(Bill::class, Bill::FOREIGN_KEY_USER, self::PRIMARY_KEY_TABLE)->orderBy('id', 'DESC');
     }
 }

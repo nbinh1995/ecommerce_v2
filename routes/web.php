@@ -15,28 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::group([
-    'prefix' => 'dashboard',
-    'namespace' => 'Admin',
-    'middleware' => 'isAdmin'
-], function () {
-    Route::get('/', 'DashBoardController')->name('dashboard');
-});
 
 Route::group([
-    'namespace' => 'Site'
+    'namespace' => 'Pages'
 ], function () {
     Route::get('/', 'HomeController')->name('home');
 
-    Route::get('/shop', 'ShopController')->name('shop');
-    Route::get('/shop/{category}', 'ShopController')->name('shop.category');
-    Route::get('/shop/{category}/{product}', 'DetailController')->name('detail');
+    Route::get('/shop', 'ShopController')->name('shop.all');
+    Route::get('/shop/new-arrivals', 'ShopNewArrivalsController')->name('shop.new');
+    Route::get('/shop/{categorySlug}', 'ShopCategoryController')->name('shop.category');
+    Route::get('/shop/{categorySlug}/{productSlug}', 'DetailController')->name('detail');
 
     Route::get('/checkout', 'CheckoutController')->name('checkout');
 
-    Route::get('/cart', 'CartController@index')->name('cart');
-    Route::post('/cart/add', 'CartController@addCart')->name('cart.add');
-    Route::post('/cart/update', 'CartController@updateCart')->name('cart.update');
-    Route::get('/cart/clear', 'CartController@clearCart')->name('cart.clear');
-    Route::get('/cart/remove/{id}', 'CartController@removeCart')->name('cart.remove');
+    Route::get('/cart', 'CartController')->name('cart.show');
+    Route::post('/cart/add', 'AddCartController')->name('cart.add');
+    Route::post('/cart/update', 'UpdateCartController')->name('cart.update');
+    Route::delete('/cart/remove', 'RemoveCartController')->name('cart.remove');
+    Route::delete('/cart/clear', 'ClearCartController')->name('cart.clear');
 });

@@ -8,7 +8,7 @@
 </style>
 @endpush
 @section('content')
-@include('partials.site.section-tree',['root'=> 'Home \ ','page'=> 'Register'])
+@include('partials.common.section-tree',['root'=> 'Home \ ','page'=> 'Register'])
 <form class="reg-container" action="{{ route('register') }}" method="POST">
     @csrf
     <h1>{{ __('create an account') }}</h1>

@@ -207,6 +207,7 @@ a {
  =============*/
 .btn-default {
   display: inline-block;
+  cursor: pointer;
   padding: $base $md-base;
   background-color: $color-primary-normal;
   border-radius: 5px;
@@ -224,7 +225,6 @@ a {
     width: 100%;
   }
   &--white {
-    width: 100%;
     background-color: white;
     color: $color-primary-normal;
     border: 1px solid $color-primary-normal;
@@ -624,7 +624,6 @@ a {
   overflow-x: scroll;
 }
 .table-full {
-  table-layout: fixed;
   width: 100%;
   min-width: 800px;
   border-collapse: collapse;

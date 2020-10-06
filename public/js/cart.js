@@ -1,19 +1,23 @@
 var cart = cart || {};
 
-cart.addCart() = function(ele) {
+cart.addCart = function(ele) {
     let data = new FormData(ele);
     $.ajax({
         url: "/cart/add",
         method: "post",
         data: data,
+        contentType: false,
+        cache: false,
+        processData: false,
         success: function(data) {
+            console.log(data);
             $(ele)
                 .find("input[name='product_amount']")
                 .val(1);
-            $("#cart").html(data["hover"]);
-            $(".badge").text(data["count"]);
-            // toastr.options = { positionClass: "toast-bottom-right" };
-            // toastr["success"]("Add Success!");
+            // $("#cart").html(data["hover"]);
+            $(".badge").text(data.carts.count);
+            toastr.options = { positionClass: "toast-bottom-right" };
+            toastr["success"]("Add Cart Success!");
         }
     });
 };
@@ -22,38 +26,46 @@ cart.clearCart = function() {
     let token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
         url: "cart/clear",
-        method: "get",
+        method: "delete",
         data: {
             _token: token
         },
         success: function(data) {
-            $(".cart-table").html(data["table"]);
-            $("#cart").html(data["hover"]);
-            $(".badge").text(data["count"]);
+            $(".cart-container").html(data.html);
+            // $("#cart").html(data["hover"]);
+            $(".badge").text(0);
             toastr.options = { positionClass: "toast-bottom-right" };
-            toastr["success"]("Clear Success!");
+            toastr["success"]("Clear Cart Success!");
         }
     });
 };
 
-cart.removeCart = function(id) {
-    url = window.location.origin + "cart/remove/" + id;
+cart.removeCart = function(ele) {
+    let id = $(ele).data("id");
+    let size_id = $(ele).data("size");
+    let token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
-        url: url,
-        method: "get",
+        url: "/cart/remove",
+        method: "delete",
+        data: {
+            _token: token,
+            product_id: id,
+            product_size_id: size_id
+        },
         success: function(data) {
-            $(".cart-table").html(data["table"]);
+            $(".cart-container").html(data.html);
             // $("#cart").html(data["hover"]);
-            $(".badge").text(data["count"]);
-            // toastr.options = { positionClass: "toast-bottom-right" };
-            // toastr["success"]("Remove Success!");
+            $(".badge").text(data.carts.count);
+            toastr.options = { positionClass: "toast-bottom-right" };
+            toastr["success"]("Update Success!");
         }
     });
 };
 
 cart.updateCart = function(ele) {
-    product_amount = $(ele).val();
-    id = $(ele).data("id");
+    let product_amount = $(ele).val();
+    let id = $(ele).data("id");
+    let size_id = $(ele).data("size");
     let token = $("meta[name='csrf-token']").attr("content");
     // console.log("{{ route('products.updateCart',['id'=>"+id+"]) }}");
     $.ajax({
@@ -62,14 +74,38 @@ cart.updateCart = function(ele) {
         data: {
             _token: token,
             product_id: id,
-            product_amount: product_amount
+            product_amount: product_amount,
+            product_size_id: size_id
         },
         success: function(data) {
-            $(".cart-table").html(data["table"]);
+            $(".cart-container").html(data.html);
             // $("#cart").html(data["hover"]);
-            $(".badge").text(data["count"]);
-            // toastr.options = { positionClass: "toast-bottom-right" };
-            // toastr["success"]("Update Success!");
+            $(".badge").text(data.carts.count);
+            toastr.options = { positionClass: "toast-bottom-right" };
+            toastr["success"]("Update Cart Success!");
         }
     });
 };
+
+$(document).ready(function() {
+    $(document).on("submit", "#add-cart", function(e) {
+        e.preventDefault();
+        console.log(e.target);
+        cart.addCart(e.target);
+    });
+
+    $(document).on("amount", ".qty", function(e) {
+        e.preventDefault();
+        cart.updateCart(e.target);
+    });
+
+    $(document).on("click", ".remove-cart", function(e) {
+        e.preventDefault();
+        cart.removeCart(e.target);
+    });
+
+    $(document).on("click", ".clear-cart", function(e) {
+        e.preventDefault();
+        cart.clearCart();
+    });
+});

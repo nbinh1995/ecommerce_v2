@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bill extends Model
 {
+    const PRIMARY_KEY_TABLE = 'id';
+    const FOREIGN_KEY_USER = 'user_id';
+
+
     use SoftDeletes;
     protected $table = 'bills';
     protected $guarded = [];
@@ -20,11 +24,11 @@ class Bill extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, self::FOREIGN_KEY_USER, 'id');
     }
 
     public function billDetails()
     {
-        return $this->hasMany(BillDetail::class, 'bill_id', 'id');
+        return $this->hasMany(BillDetail::class, BillDetail::FOREIGN_KEY_BILL, self::PRIMARY_KEY_TABLE);
     }
 }

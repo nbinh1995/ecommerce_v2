@@ -791,6 +791,7 @@ a {
 
 .btn-default {
   display: inline-block;
+  cursor: pointer;
   padding: 16px 25.888px;
   background-color: #7d79f2;
   border-radius: 5px;
@@ -812,7 +813,6 @@ a {
 }
 
 .btn-default--white {
-  width: 100%;
   background-color: white;
   color: #7d79f2;
   border: 1px solid #7d79f2;
@@ -1287,7 +1287,6 @@ a {
 }
 
 .table-full {
-  table-layout: fixed;
   width: 100%;
   min-width: 800px;
   border-collapse: collapse;
