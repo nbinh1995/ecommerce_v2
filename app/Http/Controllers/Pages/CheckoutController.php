@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -15,6 +16,6 @@ class CheckoutController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('pages.checkout');
+        return Auth::check() ? view('pages.checkout', ['user' => Auth::user()]) : view('pages.checkout');
     }
 }

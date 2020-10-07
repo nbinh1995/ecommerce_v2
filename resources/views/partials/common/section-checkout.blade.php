@@ -1,88 +1,52 @@
 <section class="section-box section-checkout">
     <div class="container">
+        @guest
         <div class="row">
             <div class="col-12">
                 <div class="widget">
-                    <p>Returning customer? <a href="#">Click here</a> to login</p>
+                    <p>Login to checkout! <a href="{{route('login')}}" style="color: #4f45e3">Click here</a> to login
+                    </p>
                 </div>
             </div>
         </div>
+        @endguest
+        @auth
         <div class="row">
             <div class="col-6">
                 <h2>Billing Details</h2>
                 <div class="widget p-5">
-                    <label for="country">Country <span class="text-danger">*</span></label>
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Full Name <span class="text-danger">*</span></label>
+                            <div class="form-group">
+                                <input type="text" class="form-group__input" name="Full Name" value="{{$user->name}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <label>Address <span class="text-danger">*</span></label>
                     <div class="form-group">
-                        <select name="country" class="form-group__input" id="country">
-                            <option value="">Select a country</option>
-                            <option value="">Viet Nam</option>
-                        </select>
+                        <input type="text" class="form-group__input" placeholder="Address" name="address"
+                            value="{{$user->address}}" />
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <label for="country">First Name <span class="text-danger">*</span></label>
+                            <label>Email Address <span class="text-danger">*</span></label>
                             <div class="form-group">
-                                <input type="text" class="form-group__input" />
+                                <input type="text" class="form-group__input" name="email address"
+                                    value="{{$user->email}}" />
                             </div>
                         </div>
                         <div class="col-6">
-                            <label for="country">Last Name <span class="text-danger">*</span></label>
+                            <label for="phone">Phone <span class="text-danger">*</span></label>
                             <div class="form-group">
-                                <input type="text" class="form-group__input" />
+                                <input type="text" class="form-group__input" placeholder="Phone Number" name="phone"
+                                    value="{{$user->phone}}" />
                             </div>
                         </div>
-                    </div>
-                    <label for="country">Company Name</label>
-                    <div class="form-group">
-                        <input type="text" class="form-group__input" />
-                    </div>
-                    <label for="country">Address <span class="text-danger">*</span></label>
-                    <div class="form-group">
-                        <input type="text" class="form-group__input" placeholder="Street address" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-group__input"
-                            placeholder="Apartment, suite, unit etc. (optional)" />
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="country">State / Country <span class="text-danger">*</span></label>
-                            <div class="form-group">
-                                <input type="text" class="form-group__input" />
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label for="country">Posta / Zip <span class="text-danger">*</span></label>
-                            <div class="form-group">
-                                <input type="text" class="form-group__input" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="country">Email Address <span class="text-danger">*</span></label>
-                            <div class="form-group">
-                                <input type="text" class="form-group__input" />
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label for="country">Phone <span class="text-danger">*</span></label>
-                            <div class="form-group">
-                                <input type="text" class="form-group__input" placeholder="Phone Number" />
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="create-form"><input type="checkbox" name="" id="create-form" /> Create an
-                            account?</label>
-                    </div>
-                    <div>
-                        <label for="ship-form"><input type="checkbox" name="" id="ship-form" /> Ship To A
-                            Different Address?</label>
                     </div>
                     <label for="order-note">Order Notes</label>
                     <div class="row center">
-                        <textarea name="" id="order-note" rows="10" class="col-12"></textarea>
+                        <textarea name="" id="order-note" rows="10" class="col-12" name="note"></textarea>
                     </div>
                 </div>
             </div>
@@ -112,26 +76,33 @@
                                 <h5 class="text-bold ml-auto">Total</h5>
                             </div>
                             <hr />
+                            @if (session('carts'))
+                            @foreach (session('carts')->list as $cart)
                             <div class="widget__row">
-                                <h5 class="">Top Up T-Shirt x 1</h5>
-                                <h5 class="ml-auto">$250.00</h5>
+                                <h5 class="">{{ $cart->product_name}} x {{$cart->product_amount}}</h5>
+                                <h5 class="ml-auto">{{ showCurrency('VND',$cart->product_price) }}</h5>
                             </div>
                             <hr />
-                            <div class="widget__row">
-                                <h5 class="">Polo Shirt x 1</h5>
-                                <h5 class="ml-auto">$100.00</h5>
-                            </div>
-                            <hr />
+                            @endforeach
+                            @endif
                             <div class="widget__row">
                                 <h5 class="text-bold">Cart Subtotal</h5>
-                                <h5 class="ml-auto">$350.00</h5>
+                                <h5 class="ml-auto">
+                                    {{ session('carts') ? showCurrency('VND',session('carts')->total) : '0 VND' }}</h5>
+                            </div>
+                            <hr />
+                            <div class="widget__row">
+                                <h5 class="text-bold">Delivery</h5>
+                                <h5 class="ml-auto">
+                                    {{ session('carts') ? showCurrency('VND',session('carts')->total) : '0 VND' }}</h5>
                             </div>
                             <hr />
                             <div class="widget__row">
                                 <h5 class="text-bold">Order Total</h5>
-                                <h5 class="text-bold ml-auto">$350.00</h5>
+                                <h5 class="text-bold ml-auto">
+                                    {{ session('carts') ? showCurrency('VND',session('carts')->total) : '0 VND' }}</h5>
                             </div>
-                            <div class="widget p-5">
+                            {{-- <div class="widget p-5">
                                 <span class="category-item">Direct Bank Transfer</span>
                             </div>
                             <div class="widget p-5">
@@ -139,12 +110,13 @@
                             </div>
                             <div class="widget p-5">
                                 <span class="category-item">Paypal</span>
-                            </div>
+                            </div> --}}
                             <a href="#" class="btn-default btn-default--full center">Place Order</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endauth
     </div>
 </section>

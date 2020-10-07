@@ -28,76 +28,85 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Accessory Manager
+              Products Manager
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{route('dashboard.accessory.index')}}" class="nav-link">
+              <a href="" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List</p>
               </a>
             </li>
           </ul>
-          {{-- <ul class="nav nav-treeview">
+          <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{route('dashboard.accessory.create')}}" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>Create</p>
+              <a href="" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Search</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Category Manager
+            </p>
           </a>
         </li>
-      </ul> --}}
-      <ul class="nav nav-treeview">
-        <li class="nav-item">
-          <a href="{{route('dashboard.accessory.search')}}" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p>Search</p>
+        <li class="nav-item has-treeview">
+          <a href="" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              User Manager
+              <i class="right fas fa-angle-left"></i>
+            </p>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>List</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Search</p>
+              </a>
+            </li>
+          </ul>
         </li>
-      </ul>
-      </li>
-      <li class="nav-item has-treeview">
-        <a href="{{route('dashboard.category.index')}}" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
-          <p>
-            Category Manager
-          </p>
-        </a>
-      </li>
-      <li class="nav-item has-treeview">
-        <a href="" class="nav-link">
-          <i class="nav-icon fas fa-copy"></i>
-          <p>
-            Car Manager
-            <i class="right fas fa-angle-left"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{route('dashboard.maker.index')}}" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Maker List</p>
-            </a>
-          </li>
-        </ul>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{route('dashboard.class.index')}}" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Class List</p>
-            </a>
-          </li>
-        </ul>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{route('dashboard.model.index')}}" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Model List</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+        <li class="nav-item has-treeview">
+          <a href="" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Bill Manager
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>List</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Search</p>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -20,7 +20,8 @@ class CreateBillsTable extends Migration
             $table->string('name');
             $table->text('address');
             $table->string('phone');
-            $table->double('delivery');
+            $table->double('delivery')->default(0);
+            $table->text('note')->nullable();
             $table->double('total_bill');
             $table->timestamps();
             $table->softDeletes();
