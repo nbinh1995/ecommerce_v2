@@ -27,6 +27,7 @@ Route::group([
     Route::get('/shop/{categorySlug}/{productSlug}', 'DetailController')->name('detail');
 
     Route::get('/checkout', 'CheckoutController')->name('checkout');
+    Route::post('/checkout', 'OrderController')->name('order');
 
     Route::get('/cart', 'CartController')->name('cart.show');
     Route::post('/cart/add', 'AddCartController')->name('cart.add');

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\BillDetail;
 use Illuminate\Http\Request;
 
-class BillDetailController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class BillDetailController extends Controller
      */
     public function index()
     {
-        //
+        return view('admins.users.list');
     }
 
     /**
@@ -42,10 +41,10 @@ class BillDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BillDetail  $billDetail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(BillDetail $billDetail)
+    public function show($id)
     {
         //
     }
@@ -53,10 +52,10 @@ class BillDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BillDetail  $billDetail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(BillDetail $billDetail)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +64,10 @@ class BillDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BillDetail  $billDetail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BillDetail $billDetail)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +75,10 @@ class BillDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BillDetail  $billDetail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BillDetail $billDetail)
+    public function destroy($id)
     {
         //
     }

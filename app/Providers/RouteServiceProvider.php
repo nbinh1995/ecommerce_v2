@@ -74,7 +74,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('dashboard')
             ->middleware('admin')
-            ->namespace($this->namespace . '\Admin')
+            ->namespace($this->namespace . '\Admins')
             ->group(base_path('routes/admin.php'));
     }
 

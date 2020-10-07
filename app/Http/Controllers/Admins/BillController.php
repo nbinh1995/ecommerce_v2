@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\Size;
+use App\Models\Bill;
 use Illuminate\Http\Request;
 
-class SizeController extends Controller
+class BillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        //
+        return view('admins.bills.list');
     }
 
     /**
@@ -42,10 +42,10 @@ class SizeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sizes  $sizes
+     * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function show(Size $sizes)
+    public function show(Bill $bill)
     {
         //
     }
@@ -53,10 +53,10 @@ class SizeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sizes  $sizes
+     * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function edit(Size $sizes)
+    public function edit(Bill $bill)
     {
         //
     }
@@ -65,10 +65,10 @@ class SizeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sizes  $sizes
+     * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Size $sizes)
+    public function update(Request $request, Bill $bill)
     {
         //
     }
@@ -76,10 +76,10 @@ class SizeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sizes  $sizes
+     * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Size $sizes)
+    public function destroy(Bill $bill)
     {
         //
     }

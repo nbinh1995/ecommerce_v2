@@ -25,8 +25,24 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+          <a href="{{ route('dashboard.categories.all')}}" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Categories Manager
+            </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="{{ route('dashboard.sizes.all')}}" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Sizes Manager
+            </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-tree"></i>
             <p>
               Products Manager
               <i class="right fas fa-angle-left"></i>
@@ -34,7 +50,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="{{ route('dashboard.products.all')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List</p>
               </a>
@@ -42,7 +58,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="{{ route('dashboard.products.search')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Search</p>
               </a>
@@ -51,23 +67,15 @@
         </li>
         <li class="nav-item has-treeview">
           <a href="" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Category Manager
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
             <p>
-              User Manager
+              Users Manager
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="{{ route('dashboard.users.all')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List</p>
               </a>
@@ -75,7 +83,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="{{ route('dashboard.users.search')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Search</p>
               </a>
@@ -86,13 +94,13 @@
           <a href="" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>
-              Bill Manager
+              Bills Manager
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="{{ route('dashboard.bills.all')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List</p>
               </a>
@@ -100,7 +108,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="" class="nav-link">
+              <a href="{{ route('dashboard.bills.search')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Search</p>
               </a>

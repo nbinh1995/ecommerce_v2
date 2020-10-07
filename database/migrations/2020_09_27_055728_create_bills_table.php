@@ -18,11 +18,13 @@ class CreateBillsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
+            $table->string('email');
             $table->text('address');
             $table->string('phone');
             $table->double('delivery')->default(0);
             $table->text('note')->nullable();
             $table->double('total_bill');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

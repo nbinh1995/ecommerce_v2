@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title','HOME')
-@section('header_page','Dashboard Page')
+@section('header_page','Products Search Page')
 @section('content')
 
 <div class="container">

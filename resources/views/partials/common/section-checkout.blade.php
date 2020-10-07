@@ -13,42 +13,46 @@
         @auth
         <div class="row">
             <div class="col-6">
-                <h2>Billing Details</h2>
-                <div class="widget p-5">
-                    <div class="row">
-                        <div class="col-12">
-                            <label>Full Name <span class="text-danger">*</span></label>
-                            <div class="form-group">
-                                <input type="text" class="form-group__input" name="Full Name" value="{{$user->name}}" />
+                <form action="{{route('order')}}" method="post" id="form-checkout">
+                    @csrf
+                    <h2>Billing Details</h2>
+                    <div class="widget p-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <label>Full Name <span class="text-danger">*</span></label>
+                                <div class="form-group">
+                                    <input type="text" class="form-group__input" name="name" value="{{$user->name}}"
+                                        placeholder="Full Name" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <label>Address <span class="text-danger">*</span></label>
-                    <div class="form-group">
-                        <input type="text" class="form-group__input" placeholder="Address" name="address"
-                            value="{{$user->address}}" />
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <label>Email Address <span class="text-danger">*</span></label>
-                            <div class="form-group">
-                                <input type="text" class="form-group__input" name="email address"
-                                    value="{{$user->email}}" />
+                        <label>Address <span class="text-danger">*</span></label>
+                        <div class="form-group">
+                            <input type="text" class="form-group__input" placeholder="Address" name="address"
+                                value="{{$user->address}}" />
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Email Address <span class="text-danger">*</span></label>
+                                <div class="form-group">
+                                    <input type="text" class="form-group__input" name="email" value="{{$user->email}}"
+                                        placeholder="Email Address" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="phone">Phone <span class="text-danger">*</span></label>
+                                <div class="form-group">
+                                    <input type="text" class="form-group__input" placeholder="Phone Number" name="phone"
+                                        value="{{$user->phone}}" />
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <label for="phone">Phone <span class="text-danger">*</span></label>
-                            <div class="form-group">
-                                <input type="text" class="form-group__input" placeholder="Phone Number" name="phone"
-                                    value="{{$user->phone}}" />
-                            </div>
+                        <label for="order-note">Order Notes</label>
+                        <div class="row center">
+                            <textarea name="" id="order-note" rows="10" class="col-12" name="note"></textarea>
                         </div>
                     </div>
-                    <label for="order-note">Order Notes</label>
-                    <div class="row center">
-                        <textarea name="" id="order-note" rows="10" class="col-12" name="note"></textarea>
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="col-6">
                 <div class="row">
@@ -111,7 +115,8 @@
                             <div class="widget p-5">
                                 <span class="category-item">Paypal</span>
                             </div> --}}
-                            <a href="#" class="btn-default btn-default--full center">Place Order</a>
+                            <button type="submit" form="form-checkout"
+                                class="btn-default btn-default--full center">Place Order</button>
                         </div>
                     </div>
                 </div>
