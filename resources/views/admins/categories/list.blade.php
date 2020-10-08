@@ -61,4 +61,5 @@
     </div>
 </div>
 @include('components.modal');
+
 @endsection
