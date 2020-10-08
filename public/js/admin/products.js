@@ -1,12 +1,19 @@
-const URL_CREATE = "/dashboard/categories/create";
-const URL_SHOW_LIST = "/dashboard/categories/list";
-const URL_EDIT = "/dashboard/categories";
-const URL_DESTROY = "/dashboard/categories";
+const TABLE = "Products";
+const SIZE_MODE = "modal-lg";
+const ID_FORM_CREATE = "form-create";
+const ID_FORM_EDIT = "form-edit";
+
+const URL_CREATE = "/dashboard/products/create";
+const URL_SHOW_LIST = "/dashboard/products/list";
+const URL_EDIT = "/dashboard/products";
+const URL_DESTROY = "/dashboard/products";
 const ID_TABLE = "#common-table";
 const ID_MODAL = "#common-modal";
 
-var category =
-    category ||
+const ID_IMAGE_PREVIEW = "#image-preview";
+
+var product =
+    product ||
     new CRUD(
         URL_CREATE,
         URL_SHOW_LIST,
@@ -16,50 +23,63 @@ var category =
         ID_MODAL
     );
 
-category.init = function () {
-    category.showList();
+product.previewImage = function(element) {
+    let img = element.files[0];
+    let reader = new FileReader();
+    reader.onloadend = function() {
+        $(ID_IMAGE_PREVIEW).attr("src", reader.result);
+    };
+    reader.readAsDataURL(img);
 };
 
-$(document).ready(function () {
-    category.init();
+product.init = function() {
+    product.showList();
+};
 
-    $(document).on("click", ".create", function (e) {
-        category.setModal(
-            "Create Category",
-            "Add Category",
-            "modal-md",
-            "form-create",
+$(document).ready(function() {
+    product.init();
+
+    $(document).on("click", ".create", function(e) {
+        product.setModal(
+            `Create ${TABLE}`,
+            `Add ${TABLE}`,
+            SIZE_MODE,
+            ID_FORM_CREATE,
             ""
         );
-        category.createItem();
+        product.createItem();
         $(ID_MODAL).modal("show");
     });
 
-    $(document).on("click", ".edit", function (e) {
-        category.setModal(
-            "Edit Category",
-            "Update Category",
-            "modal-md",
-            "form-edit",
+    $(document).on("click", ".edit", function(e) {
+        product.setModal(
+            `Edit ${TABLE}`,
+            `Update ${TABLE}`,
+            SIZE_MODE,
+            ID_FORM_EDIT,
             ""
         );
-        category.editItem($(e.target).data("id"));
+        product.editItem($(e.target).data("id"));
         $(ID_MODAL).modal("show");
     });
 
-    $(document).on("click", ".remove", function (e) {
-        category.destroyItem($(e.target).data("id"));
+    $(document).on("click", ".remove", function(e) {
+        product.destroyItem($(e.target).data("id"));
     });
 
-    $(document).on("submit", "#form-create", function (e) {
+    $(document).on("change", "#image-btn", function(e) {
+        product.previewImage(e.target);
+    });
+
+    $(document).on("submit", `#${ID_FORM_CREATE}`, function(e) {
         e.preventDefault();
-        category.storeItem(e.target);
+        product.storeItem(e.target);
         $(ID_MODAL).modal("hide");
     });
 
-    $(document).on("submit", "#form-edit", function (e) {
+    $(document).on("submit", `#${ID_FORM_EDIT}`, function(e) {
         e.preventDefault();
-        category.updateItem(e.target);
+        product.updateItem(e.target);
         $(ID_MODAL).modal("hide");
     });
 });

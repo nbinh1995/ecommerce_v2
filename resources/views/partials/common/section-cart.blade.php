@@ -38,7 +38,7 @@
                                             data-size="{{ $cart->product_size_id}}" />
                                     </div>
                                 </td>
-                                <td>{{$cart->getNameProductSizes($sizes)}}</td>
+                                <td>{{$cart->getNameSizeByID($sizes)}}</td>
                                 <td>{{ showCurrency('VND',$cart->product_total) }}</td>
                                 <td>
                                     <span class="btn-default remove-cart" data-id="{{$cart->product_id}}"

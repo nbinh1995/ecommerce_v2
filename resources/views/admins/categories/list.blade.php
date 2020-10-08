@@ -31,7 +31,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Datatable Category Accessory</h3>
+                    <h3 class="card-title">Datatable Category List</h3>
                 </div>
                 <div class="card-body">
                     <button class="btn btn-primary mb-2 create"><i class="far fa-plus-square"

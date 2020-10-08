@@ -26,7 +26,7 @@ class Cart
         $this->product_total = $input['product_amount'] * $input['product_price'];
     }
 
-    public function getNameProductSizes(object $sizes): ?string
+    public function getNameSizeByID(object $sizes): ?string
     {
         foreach ($sizes as $size) {
             if ($size->id == $this->product_size_id) {

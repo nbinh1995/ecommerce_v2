@@ -10,8 +10,8 @@ const URL_DESTROY = "/dashboard/sizes";
 const ID_TABLE = "#common-table";
 const ID_MODAL = "#common-modal";
 
-var category =
-    category ||
+var size =
+    size ||
     new CRUD(
         URL_CREATE,
         URL_SHOW_LIST,
@@ -21,50 +21,50 @@ var category =
         ID_MODAL
     );
 
-category.init = function () {
-    category.showList();
+size.init = function () {
+    size.showList();
 };
 
 $(document).ready(function () {
-    category.init();
+    size.init();
 
     $(document).on("click", ".create", function (e) {
-        category.setModal(
+        size.setModal(
             `Create ${TABLE}`,
             `Add ${TABLE}`,
             SIZE_MODE,
             ID_FORM_CREATE,
             ""
         );
-        category.createItem();
+        size.createItem();
         $(ID_MODAL).modal("show");
     });
 
     $(document).on("click", ".edit", function (e) {
-        category.setModal(
+        size.setModal(
             `Edit ${TABLE}`,
             `Update ${TABLE}`,
             SIZE_MODE,
             ID_FORM_EDIT,
             ""
         );
-        category.editItem($(e.target).data("id"));
+        size.editItem($(e.target).data("id"));
         $(ID_MODAL).modal("show");
     });
 
     $(document).on("click", ".remove", function (e) {
-        category.destroyItem($(e.target).data("id"));
+        size.destroyItem($(e.target).data("id"));
     });
 
     $(document).on("submit", `#${ID_FORM_CREATE}`, function (e) {
         e.preventDefault();
-        category.storeItem(e.target);
+        size.storeItem(e.target);
         $(ID_MODAL).modal("hide");
     });
 
     $(document).on("submit", `#${ID_FORM_EDIT}`, function (e) {
         e.preventDefault();
-        category.updateItem(e.target);
+        size.updateItem(e.target);
         $(ID_MODAL).modal("hide");
     });
 });

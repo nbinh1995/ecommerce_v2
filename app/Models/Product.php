@@ -37,6 +37,11 @@ class Product extends Model
         return $this->hasMany(BillDetail::class, 'product_id', self::PRIMARY_KEY_TABLE);
     }
 
+    public function toStringNew(): string
+    {
+        return $this->is_new == 0 ? 'NOT NEW' : "NEW";
+    }
+
     public static function getProductsWithCategoryByID(int $category_id)
     {
         return self::with('category:id,name,slug')->where('category_id', $category_id)->paginate(self::PRODUCT_PER_PAGE);
