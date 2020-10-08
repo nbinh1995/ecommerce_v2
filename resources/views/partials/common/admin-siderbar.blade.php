@@ -25,7 +25,7 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview">
-          <a href="{{ route('dashboard.categories.all')}}" class="nav-link">
+          <a href="{{ route('dashboard.categories')}}" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Categories Manager
@@ -33,7 +33,7 @@
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="{{ route('dashboard.sizes.all')}}" class="nav-link">
+          <a href="{{ route('dashboard.sizes')}}" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Sizes Manager
@@ -50,7 +50,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('dashboard.products.all')}}" class="nav-link">
+              <a href="{{ route('dashboard.products')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List</p>
               </a>
@@ -75,7 +75,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('dashboard.users.all')}}" class="nav-link">
+              <a href="{{ route('dashboard.users')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List</p>
               </a>
@@ -100,7 +100,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('dashboard.bills.all')}}" class="nav-link">
+              <a href="{{ route('dashboard.bills')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>List</p>
               </a>
