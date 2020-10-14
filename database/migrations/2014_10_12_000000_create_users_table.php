@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->text('address');
             $table->string('phone');
             $table->tinyInteger('is_admin')->default(0);
-            $table->date('last_login_at')->nullable();
+            $table->dateTime('last_login_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -1,7 +1,7 @@
 <form action="{{$url}}" method="post" id="{{$idForm}}" enctype="multipart/form-data">
     @csrf
     @isset($size)
-    @method('PATCH')
+    @method('PUT')
     <input type="hidden" name="id" value="{{$size->id}}">
     @endisset
     <div class="form-group row">

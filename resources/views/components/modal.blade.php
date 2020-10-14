@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="common-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="{{$idModal}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog {{$sizeModal ?? ''}}">
         <div class="modal-content">
             <div class="modal-header">

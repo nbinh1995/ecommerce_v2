@@ -60,6 +60,6 @@
         </div>
     </div>
 </div>
-@include('components.modal');
+@include('components.modal',['idModal'=>'common-modal']);
 
 @endsection

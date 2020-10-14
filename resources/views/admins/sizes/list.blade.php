@@ -2,7 +2,6 @@
 @section('title','HOME')
 @section('header_page','Sizes Page')
 
-
 @push('head')
 <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -61,6 +60,6 @@
         </div>
     </div>
 </div>
-@include('components.modal');
+@include('components.modal',['idModal'=>'common-modal']);
 
 @endsection

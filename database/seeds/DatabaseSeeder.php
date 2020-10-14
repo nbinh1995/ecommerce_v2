@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Hue',
         ]);
 
+        factory(User::class, 15)->create();
         // $this->call(UserSeeder::class);
         foreach ($this->categories as  $value) {
             Category::create(['name' => $value, 'slug' => Str::slug($value)]);

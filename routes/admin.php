@@ -16,13 +16,18 @@ Route::get('/', 'DashBoardController')->name('dashboard');
 
 Route::group(['prefix' => 'users'], function () {
     Route::get('/', 'UserController@index')->name('dashboard.users');
-    Route::get('/list', 'UserController@list')->name('dashboard.users.list');
+    Route::get('/listAdmin', 'UserController@listAdmin')->name('dashboard.users.listAdmin');
     Route::get('/create', 'UserController@create')->name('dashboard.users.create');
     Route::get('/search', 'SearchUserController')->name('dashboard.users.search');
     Route::post('/', 'UserController@store')->name('dashboard.users.store');
+    Route::get('/{userID}/show', 'UserController@show')->name('dashboard.users.show');
     Route::get('/{userID}/edit', 'UserController@edit')->name('dashboard.users.edit');
-    Route::patch('/{userID}', 'UserController@update')->name('dashboard.users.update');
+    Route::put('/{userID}', 'UserController@update')->name('dashboard.users.update');
     Route::delete('/{userID}', 'UserController@destroy')->name('dashboard.users.destroy');
+
+    Route::get('/listCustomer', 'UserController@listCustomer')->name('dashboard.users.listCustomer');
+    Route::get('/listBanned', 'UserController@listBanned')->name('dashboard.users.listBanned');
+    Route::patch('/{userID}', 'UserController@restore')->name('dashboard.users.restore');
 });
 
 Route::group(['prefix' => 'categories'], function () {
@@ -31,7 +36,7 @@ Route::group(['prefix' => 'categories'], function () {
     Route::get('/create', 'CategoryController@create')->name('dashboard.categories.create');
     Route::post('/', 'CategoryController@store')->name('dashboard.categories.store');
     Route::get('/{categorySlug}/edit', 'CategoryController@edit')->name('dashboard.categories.edit');
-    Route::patch('/{categorySlug}', 'CategoryController@update')->name('dashboard.categories.update');
+    Route::put('/{categorySlug}', 'CategoryController@update')->name('dashboard.categories.update');
     Route::delete('/{categorySlug}', 'CategoryController@destroy')->name('dashboard.categories.destroy');
 });
 
@@ -41,7 +46,7 @@ Route::group(['prefix' => 'sizes'], function () {
     Route::get('/create', 'SizeController@create')->name('dashboard.sizes.create');
     Route::post('/', 'SizeController@store')->name('dashboard.sizes.store');
     Route::get('/{sizeID}/edit', 'SizeController@edit')->name('dashboard.sizes.edit');
-    Route::patch('/{sizeID}', 'SizeController@update')->name('dashboard.sizes.update');
+    Route::put('/{sizeID}', 'SizeController@update')->name('dashboard.sizes.update');
     Route::delete('/{sizeID}', 'SizeController@destroy')->name('dashboard.sizes.destroy');
 });
 
@@ -52,7 +57,7 @@ Route::group(['prefix' => 'products'], function () {
     Route::get('/search', 'SearchProductController')->name('dashboard.products.search');
     Route::post('/', 'ProductController@store')->name('dashboard.products.store');
     Route::get('/{productSlug}/edit', 'ProductController@edit')->name('dashboard.products.edit');
-    Route::patch('/{productSlug}', 'ProductController@update')->name('dashboard.products.update');
+    Route::put('/{productSlug}', 'ProductController@update')->name('dashboard.products.update');
     Route::delete('/{productSlug}', 'ProductController@destroy')->name('dashboard.products.destroy');
 });
 
@@ -64,6 +69,6 @@ Route::group(['prefix' => 'bills'], function () {
     Route::post('/', 'BillController@store')->name('dashboard.bills.store');
     Route::get('/{billID}', 'BillController@show')->name('dashboard.bills.show');
     Route::get('/{billID}/edit', 'BillController@edit')->name('dashboard.bills.edit');
-    Route::patch('/{billID}', 'BillController@update')->name('dashboard.bills.update');
+    Route::put('/{billID}', 'BillController@update')->name('dashboard.bills.update');
     Route::delete('/{billID}', 'BillController@destroy')->name('dashboard.bills.destroy');
 });

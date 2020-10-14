@@ -6,7 +6,7 @@
         $("input[value='"+{{$product->is_new}}+"']").prop('checked',true);
         $("#description").val("{{$product->description}}");
     </script>
-    @method('PATCH')
+    @method('PUT')
     <input type="hidden" name="id" value="{{$product->id}}">
     @endisset
     <div class="form-group row">

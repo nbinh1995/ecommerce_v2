@@ -1,7 +1,7 @@
 <form action="{{$url}}" method="post" id="{{$idForm}}" enctype="multipart/form-data">
     @csrf
     @isset($category)
-    @method('PATCH')
+    @method('PUT')
     <input type="hidden" name="id" value="{{$category->id}}">
     @endisset
     <div class="form-group row">
