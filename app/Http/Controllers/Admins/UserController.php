@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bill;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class UserController extends Controller
      */
     public function listAdmin()
     {
-        $admins = User::where('is_admin', 1)->where('id', '!=', 1)->get();
+        $admins = User::where('is_admin', 1)->get();
         $html = view('partials.table-tbody.table-admin', compact('admins'))->render();
 
         return response()->json(['html' => $html], 200);
@@ -98,9 +99,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($userID)
     {
-        //
+        $bills = Bill::getBillsByUserId($userID);
     }
 
     /**
@@ -150,7 +151,7 @@ class UserController extends Controller
      */
     public function restore($userID)
     {
-        User::withTrashed()->findOrFail($userID)->restore();
+        User::onlyTrashed()->findOrFail($userID)->restore();
 
         return response()->json(['code' => 204], 200);
     }

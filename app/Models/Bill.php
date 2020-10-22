@@ -31,4 +31,17 @@ class Bill extends Model
     {
         return $this->hasMany(BillDetail::class, BillDetail::FOREIGN_KEY_BILL, self::PRIMARY_KEY_TABLE);
     }
+
+    public static function getBillsPerOneDay()
+    {
+        return self::groupBy('date')
+            ->selectRaw('DATE(bills.created_at) AS date,count(bills.id) AS amount_bills, SUM(bills.total_bill) AS total_bills')
+            ->orderBy('date', 'DESC')
+            ->get();
+    }
+
+    public static function getBillsByUserId($userID)
+    {
+        return self::where('user_id', $userID)->orderBy('created_at', 'DESC')->get();
+    }
 }

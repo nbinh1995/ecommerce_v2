@@ -167,8 +167,8 @@ $(document).ready(function() {
 
     $(document).on("click", ".edit", function(e) {
         user.setModal(
-            `Edit Admin ${TABLE}`,
-            `Update Admin ${TABLE}`,
+            `Edit ${TABLE}`,
+            `Update ${TABLE}`,
             SIZE_MODE,
             ID_FORM_EDIT,
             ""

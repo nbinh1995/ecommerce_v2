@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BillController extends Controller
 {
@@ -16,6 +17,19 @@ class BillController extends Controller
     public function index()
     {
         return view('admins.bills.list');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        $bills = Bill::getBillsPerOneDay();
+
+        $html = view('partials.table-tbody.table-bills_per_one_day', compact('bills'))->render();
+        return response()->json(['html' => $html], 200);
     }
 
     /**

@@ -67,8 +67,8 @@ Route::group(['prefix' => 'bills'], function () {
     Route::get('/create', 'BillController@create')->name('dashboard.bills.create');
     Route::get('/search', 'SearchBillController')->name('dashboard.bills.search');
     Route::post('/', 'BillController@store')->name('dashboard.bills.store');
-    Route::get('/{billID}', 'BillController@show')->name('dashboard.bills.show');
-    Route::get('/{billID}/edit', 'BillController@edit')->name('dashboard.bills.edit');
-    Route::put('/{billID}', 'BillController@update')->name('dashboard.bills.update');
-    Route::delete('/{billID}', 'BillController@destroy')->name('dashboard.bills.destroy');
+    Route::get('/{billDate}', 'BillController@show')->name('dashboard.bills.show');
+    Route::get('/{billDate}/edit', 'BillController@edit')->name('dashboard.bills.edit');
+    Route::put('/{billDate}', 'BillController@update')->name('dashboard.bills.update');
+    Route::delete('/{billDate}', 'BillController@destroy')->name('dashboard.bills.destroy');
 });

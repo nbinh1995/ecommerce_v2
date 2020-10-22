@@ -39,6 +39,7 @@ class OrderController extends Controller
             ];
             BillDetail::create($info_bill_detail);
         }
+        session()->flush('carts');
         return redirect()->route('home')->with('order_status', 'Success');
     }
 }
