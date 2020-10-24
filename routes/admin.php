@@ -20,7 +20,7 @@ Route::group(['prefix' => 'users'], function () {
     Route::get('/create', 'UserController@create')->name('dashboard.users.create');
     Route::get('/search', 'SearchUserController')->name('dashboard.users.search');
     Route::post('/', 'UserController@store')->name('dashboard.users.store');
-    Route::get('/{userID}/show', 'UserController@show')->name('dashboard.users.show');
+    Route::get('/{userID}/bills-of-user', 'UserController@show')->name('dashboard.users.show');
     Route::get('/{userID}/edit', 'UserController@edit')->name('dashboard.users.edit');
     Route::put('/{userID}', 'UserController@update')->name('dashboard.users.update');
     Route::delete('/{userID}', 'UserController@destroy')->name('dashboard.users.destroy');
@@ -64,11 +64,8 @@ Route::group(['prefix' => 'products'], function () {
 Route::group(['prefix' => 'bills'], function () {
     Route::get('/', 'BillController@index')->name('dashboard.bills');
     Route::get('/list', 'BillController@list')->name('dashboard.bills.list');
-    Route::get('/create', 'BillController@create')->name('dashboard.bills.create');
     Route::get('/search', 'SearchBillController')->name('dashboard.bills.search');
-    Route::post('/', 'BillController@store')->name('dashboard.bills.store');
-    Route::get('/{billDate}', 'BillController@show')->name('dashboard.bills.show');
-    Route::get('/{billDate}/edit', 'BillController@edit')->name('dashboard.bills.edit');
-    Route::put('/{billDate}', 'BillController@update')->name('dashboard.bills.update');
-    Route::delete('/{billDate}', 'BillController@destroy')->name('dashboard.bills.destroy');
+    Route::get('/{billID}/show-detail-bill', 'BillController@showDetailBill')->name('dashboard.bills.show');
+    Route::get('/{billDate}/bills-of-day', 'BillController@billsOfDay')->name('dashboard.bills.billsOfDay');
+    Route::patch('/{billID}', 'BillController@update')->name('dashboard.bills.update');
 });

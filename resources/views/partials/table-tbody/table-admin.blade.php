@@ -10,8 +10,10 @@
     <td>
         <button class="btn btn-info edit" data-id="{{$admin->id}}"><i class="far fa-edit"
                 style="pointer-events: none"></i></button>
+        @if ($admin->id != 1)
         <button class="btn btn-danger remove" data-id="{{$admin->id}}"><i class="far fa-trash-alt"
                 style="pointer-events: none"></i></button>
+        @endif
     </td>
     @endif
 </tr>

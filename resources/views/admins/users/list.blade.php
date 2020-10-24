@@ -152,5 +152,6 @@
     </div>
 </div>
 @include('components.modal',['idModal'=>'common-modal']);
-
+@include('components.modal_no_footer',['idModal'=>'detail-modal','sizeModal'=>'modal-lg','titleModal'=>'Bills Of
+Customer']);
 @endsection

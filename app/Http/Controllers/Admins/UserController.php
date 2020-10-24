@@ -102,6 +102,9 @@ class UserController extends Controller
     public function show($userID)
     {
         $bills = Bill::getBillsByUserId($userID);
+        $html = view('partials.table.table-bill', ['bills' => $bills])->render();
+
+        return response()->json(['html' => $html], 200);
     }
 
     /**

@@ -16,7 +16,9 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view('admins.bills.list');
+        $bills = Bill::getBillsPerOneDay();
+
+        return view('admins.bills.list', compact('bills'));
     }
 
     /**
@@ -26,8 +28,6 @@ class BillController extends Controller
      */
     public function list()
     {
-        $bills = Bill::getBillsPerOneDay();
-
         $html = view('partials.table-tbody.table-bills_per_one_day', compact('bills'))->render();
         return response()->json(['html' => $html], 200);
     }
@@ -59,9 +59,22 @@ class BillController extends Controller
      * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function show(Bill $bill)
+    public function showDetailBill(Bill $billID)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Bill  $bill
+     * @return \Illuminate\Http\Response
+     */
+    public function billsOfDay($billDate)
+    {
+        $bills = Bill::getBillsByDay($billDate);
+
+        return view('admins.bills.bills', compact('bills'));
     }
 
     /**

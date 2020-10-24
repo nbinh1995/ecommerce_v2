@@ -44,4 +44,10 @@ class Bill extends Model
     {
         return self::where('user_id', $userID)->orderBy('created_at', 'DESC')->get();
     }
+
+
+    public static function getBillsByDay($date)
+    {
+        return self::whereDate('created_at', $date)->orderBy('id')->get();
+    }
 }

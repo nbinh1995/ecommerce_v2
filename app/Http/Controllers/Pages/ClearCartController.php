@@ -15,7 +15,7 @@ class ClearCartController extends Controller
      */
     public function __invoke(Request $request)
     {
-        session()->flush('carts');
+        session()->forget('carts');
         $html = view('partials.common.section-cart')->render();
 
         return response()->json(['html' => $html], 200);

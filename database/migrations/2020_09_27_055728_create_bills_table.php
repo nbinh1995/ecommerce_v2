@@ -24,7 +24,7 @@ class CreateBillsTable extends Migration
             $table->double('delivery')->default(0);
             $table->text('note')->nullable();
             $table->double('total_bill');
-            $table->tinyInteger('status')->default(0);
+            $table->enum('status', ['Cancel', 'Pending', 'Confirmed', 'Completed'])->default('Pending');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -177,6 +177,11 @@ $(document).ready(function() {
         $(ID_MODAL).modal("show");
     });
 
+    $(document).on("click", ".detail", function(e) {
+        user.detailItem($(e.target).data("id"));
+        $(ID_MODAL).modal("show");
+    });
+
     $(document).on("click", ".remove", function(e) {
         user.destroyItem($(e.target).data("id"));
     });

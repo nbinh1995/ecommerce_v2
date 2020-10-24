@@ -21,7 +21,7 @@ class RemoveCartController extends Controller
         if ($carts->count != 0) {
             session()->put('carts', $carts);
         } else {
-            session()->flush('carts');
+            session()->forget('carts');
         }
 
         $html = view('partials.common.section-cart')->render();

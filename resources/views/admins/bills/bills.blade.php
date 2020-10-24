@@ -18,6 +18,8 @@
 <script src="{{ asset('AdminLTE/plugins/toastr/toastr.min.js')}}"></script>
 <!-- BootBox -->
 <script src="{{ asset('AdminLTE/plugins/bootbox/bootbox.js')}}"></script>
+<!-- jquery-validation -->
+<script src="{{ asset('AdminLTE/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 {{-- <script src="{{asset('js/libs/crud.js')}}"></script> --}}
 {{-- <script src="{{asset('js/admin/bills.js')}}"></script> --}}
 
@@ -37,32 +39,31 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Amount Bills</th>
-                                <th scope="col">Total Bills</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Note</th>
+                                <th scope="col">Total Bill</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($bills as $index => $bill)
-                            <tr>
-                                <th scope="col">{{$index+1}}</th>
-                                <td>{{$bill->date}}</td>
-                                <td>{{$bill->amount_bills}}</td>
-                                <td>{{ showCurrency('VND', $bill->total_bills)}}</td>
-                                <td>
-                                    <a href="{{route('dashboard.bills.billsOfDay',['billDate'=>$bill->date])}}"
-                                        class="btn btn-info detail">Detail</a>
-                                </td>
-                            </tr>
-                            @endforeach
+
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Amount Bills</th>
-                                <th scope="col">Total Bills</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Note</th>
+                                <th scope="col">Total Bill</th>
+                                <th scope="col">Created_at</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </tfoot>
