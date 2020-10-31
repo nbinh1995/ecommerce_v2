@@ -98,11 +98,13 @@
                                 @foreach ($products as $product)
                                 <div>
                                     <a
-                                        href="{{route('detail',['productSlug'=>$product->slug,'categorySlug'=>$product->category->slug])}}">
+                                        href="{{route('detail',['productSlug'=>$product->slug,'categorySlug'=>$product->getProductCategory()->slug])}}">
                                         <figure class="box-product">
-                                            <img src="{{$product->image}}" alt="" />
-                                            <h3 class="text-line"><a href="">{{$product->name}}</a></h3>
-                                            <p class="text-line">{{$product->description}}</p>
+                                            <img src="{{$product->getProductFirstImage()->path}}" alt="" />
+                                            <h3 class="text-line"><a
+                                                    href="{{route('detail',['productSlug'=>$product->slug,'categorySlug'=>$product->getProductCategory()->slug])}}">{{$product->name}}</a>
+                                            </h3>
+                                            <p class="text-line-camp">{{$product->description}}</p>
                                             <p class="box-product__price">{{ showCurrency('VND',$product->price) }}
                                             </p>
                                         </figure>

@@ -40,11 +40,6 @@
 <script src="{{ asset('AdminLTE/plugins/toastr/toastr.min.js')}}"></script>
 <!-- BootBox -->
 <script src="{{ asset('AdminLTE/plugins/bootbox/bootbox.js')}}"></script>
-<!-- jquery-validation -->
-<script src="{{ asset('AdminLTE/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-<script src="{{asset('js/libs/crud.js')}}"></script>
-<script src="{{asset('js/admin/products.js')}}"></script>
-
 @endpush
 
 @section('content')
@@ -57,8 +52,8 @@
                     <h3 class="card-title">Datatable Product List</h3>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-primary mb-2 create"><i class="far fa-plus-square"
-                            style="pointer-events: none"></i></button>
+                    <a href="{{route('dashboard.products.create')}}" class="btn btn-primary mb-2"><i
+                            class="far fa-plus-square" style="pointer-events: none"></i></a>
                     <table class="table table-bordered" id="common-table">
                         <thead>
                             <tr>
@@ -66,13 +61,33 @@
                                 <th scope="col">Image Product</th>
                                 <th scope="col">Category Product</th>
                                 <th scope="col">Name Product</th>
+                                <th scope="col">Attribute Product</th>
                                 <th scope="col">Price Product</th>
                                 <th scope="col">New Product</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($products as $index => $product)
+                            <tr>
+                                <th scope="col">{{ $index+1 }}</th>
+                                <td><img src="{{ $product->image }}" alt="{{ $product->name }}"
+                                        style="width: 100px; height:auto"></td>
+                                <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td></td>
+                                <td>{{ showCurrency('VND', $product->price)}}</td>
+                                <td>{!! $product->toHtmlNew() !!}</td>
+                                <td>
+                                    <a href="{{route('dashboard.products.edit',['productSlug' => $product->id])}}"
+                                        class="btn btn-info edit"><i class="far fa-edit"
+                                            style="pointer-events: none"></i></a>
+                                    <a href="{{route('dashboard.products.destroy',['productSlug' => $product->id])}}"
+                                        class="btn btn-danger remove"><i class="far fa-trash-alt"
+                                            style="pointer-events: none"></i></a>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
@@ -91,7 +106,5 @@
         </div>
     </div>
 </div>
-@include('components.modal',['idModal'=>'common-modal']);
-
 
 @endsection

@@ -3,17 +3,27 @@
 @section('header_page','Categories Page')
 
 @push('head')
+<!-- datatable  -->
 <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 <!-- Toastr -->
 <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/toastr/toastr.min.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2/css/select2.min.css')}}">
+<!-- summernote -->
+<link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.css')}}">
 @endpush
 
 @push('script')
+<!-- datatable  -->
 <script src="{{ asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{ asset('AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{ asset('AdminLTE/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- Summernote -->
+<script src="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- Toastr -->
 <script src="{{ asset('AdminLTE/plugins/toastr/toastr.min.js')}}"></script>
 <!-- BootBox -->
@@ -41,6 +51,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name Category</th>
+                                <th scope="col">Attribute Category</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -51,6 +62,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name Category</th>
+                                <th scope="col">Attribute Category</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </tfoot>

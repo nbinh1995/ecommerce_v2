@@ -615,6 +615,16 @@ figure {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding: 0px 10px;
+}
+
+.text-line-camp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 0px 10px;
+  text-align: left;
 }
 
 /* ==============

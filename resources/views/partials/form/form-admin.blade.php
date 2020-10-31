@@ -12,26 +12,10 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-12 col-form-label">{{ __('Address') }}</label>
+        <label class="col-md-12 col-form-label">{{ __('Email') }}</label>
         <div class="col-md-12">
-            <input type="text" class="form-control" name="address" required placeholder="Address"
-                value="{{$admin->address ?? ''}}">
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-6 row">
-            <label class="col-md-12 col-form-label">{{ __('Email') }}</label>
-            <div class="col-md-12">
-                <input type="email" class="form-control" name="email" required placeholder="Email Name"
-                    value="{{$admin->email ?? ''}}">
-            </div>
-        </div>
-        <div class="col-6 row">
-            <label class="col-md-12 col-form-label">{{ __('Phone Number') }}</label>
-            <div class="col-md-12">
-                <input type="tel" class="form-control" name="phone" required placeholder="Phone Number"
-                    value="{{$admin->phone ?? ''}}">
-            </div>
+            <input type="email" class="form-control" name="email" required placeholder="Email Name"
+                value="{{$admin->email ?? ''}}">
         </div>
     </div>
     @if (isset($admin))

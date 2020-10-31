@@ -24,12 +24,14 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
 
     public function authenticated(Request $request, $user)
     {
@@ -55,11 +57,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectTo()
-    {
-        if (auth()->user()->isAdmin()) {
-            return '/dashboard';
-        }
-        return '/';
-    }
+    // public function redirectTo()
+    // {
+    //     return '/';
+    // }
 }

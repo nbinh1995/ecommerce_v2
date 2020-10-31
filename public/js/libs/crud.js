@@ -16,8 +16,8 @@ class CRUD {
         $(this.modal).find("button[type='submit']").attr("form", idForm);
     }
 
-    showList() {
-        $.ajax({
+    async showList() {
+        await $.ajax({
             url: this.show,
             method: "GET",
             dataType: "json",
@@ -36,8 +36,8 @@ class CRUD {
         });
     }
 
-    createItem() {
-        $.ajax({
+    async createItem() {
+        await $.ajax({
             url: this.create,
             method: "GET",
             dataType: "json",
@@ -48,10 +48,10 @@ class CRUD {
         });
     }
 
-    storeItem(element, message = "Created Success!") {
+    async storeItem(element, message = "Created Success!") {
         let url = $(element).attr("action");
         let data = new FormData(element);
-        $.ajax({
+        await $.ajax({
             url: url,
             method: "POST",
             data: data,
@@ -72,23 +72,25 @@ class CRUD {
         });
     }
 
-    editItem(id) {
+    async editItem(id) {
         let url = `${this.edit}/${id}/edit`;
-        $.ajax({
+        console.log(url);
+        await $.ajax({
             url: url,
             method: "GET",
             dataType: "json",
             success: function (data) {
                 let tbody = `${this.modal} .modal-body`;
                 $(tbody).html(data.html);
+                console.log('edit');
             }.bind(this),
         });
     }
 
-    updateItem(element, message = "Updated Success!") {
+    async updateItem(element, message = "Updated Success!") {
         let url = $(element).attr("action");
         let data = new FormData(element);
-        $.ajax({
+        await $.ajax({
             url: url,
             method: "POST",
             data: data,
@@ -120,7 +122,7 @@ class CRUD {
                     className: "btn-danger",
                 },
             },
-            callback: function (result) {
+            callback:function (result){
                 if (result) {
                     $.ajax({
                         type: "DELETE",
@@ -139,5 +141,6 @@ class CRUD {
                 }
             }.bind(this),
         });
+       
     }
 }

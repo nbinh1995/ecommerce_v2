@@ -22,7 +22,7 @@
 <script src="{{ asset('AdminLTE/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('js/libs/crud.js')}}"></script>
 <script src="{{asset('js/admin/users.js')}}"></script>
-
+<script src="{{asset('js/admin/admins.js')}}"></script>
 @endpush
 
 @section('content')
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-body">
                     @if (Auth::user()->id == 1)
-                    <button class="btn btn-primary mb-2 create"><i class="far fa-plus-square"
+                    <button class="btn btn-primary mb-2 create-admin"><i class="far fa-plus-square"
                             style="pointer-events: none"></i></button>
                     @endif
                     <table class="table table-bordered" id="admin-table">
@@ -45,8 +45,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Address</th>
                                 <th scope="col">Last Login</th>
                                 @if (Auth::user()->id == 1)
                                 <th scope="col">Action</th>
@@ -61,8 +59,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Address</th>
                                 <th scope="col">Last Login</th>
                                 @if (Auth::user()->id == 1)
                                 <th scope="col">Action</th>
@@ -81,6 +77,8 @@
                     <h3 class="card-title">Datatable Customer List</h3>
                 </div>
                 <div class="card-body">
+                    <button class="btn btn-primary mb-2 create"><i class="far fa-plus-square"
+                            style="pointer-events: none"></i></button>
                     <table class="table table-bordered" id="customer-table">
                         <thead>
                             <tr>

@@ -10,6 +10,15 @@
 
 <link rel="stylesheet" href="{{asset("AdminLTE/plugins/toastr/toastr.min.css")}}">
 <style>
+    .tag-attr {
+        border: 1px solid #007bff;
+        border-radius: 0.15rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
+        padding: 0.25rem;
+    }
+</style>
+<style>
     .section-tree {
         margin-bottom: 0;
     }

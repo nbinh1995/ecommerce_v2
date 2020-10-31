@@ -18,9 +18,12 @@
 <script src="{{ asset('AdminLTE/plugins/toastr/toastr.min.js')}}"></script>
 <!-- BootBox -->
 <script src="{{ asset('AdminLTE/plugins/bootbox/bootbox.js')}}"></script>
-{{-- <script src="{{asset('js/libs/crud.js')}}"></script> --}}
-{{-- <script src="{{asset('js/admin/bills.js')}}"></script> --}}
-
+<script>
+    $('#common-table').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                });
+</script>
 @endpush
 
 @section('content')
@@ -72,6 +75,5 @@
         </div>
     </div>
 </div>
-@include('components.modal',['idModal'=>'common-modal']);
 
 @endsection

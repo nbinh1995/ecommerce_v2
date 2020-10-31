@@ -19,6 +19,6 @@ class isAdmin
         if (Auth::user() && Auth::user()->isAdmin()) {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/dashboard/login');
     }
 }

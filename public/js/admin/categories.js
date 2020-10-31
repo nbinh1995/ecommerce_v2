@@ -28,7 +28,7 @@ category.init = function () {
 $(document).ready(function () {
     category.init();
 
-    $(document).on("click", ".create", function (e) {
+    $(document).on("click", ".create", async function(e) {
         category.setModal(
             `Create ${TABLE}`,
             `Add ${TABLE}`,
@@ -36,11 +36,12 @@ $(document).ready(function () {
             ID_FORM_CREATE,
             ""
         );
-        category.createItem();
+        await category.createItem();
+        $('.select2').select2();    
         $(ID_MODAL).modal("show");
     });
 
-    $(document).on("click", ".edit", function (e) {
+    $(document).on("click", ".edit",async function (e) {
         category.setModal(
             `Edit ${TABLE}`,
             `Update ${TABLE}`,
@@ -48,7 +49,9 @@ $(document).ready(function () {
             ID_FORM_EDIT,
             ""
         );
-        category.editItem($(e.target).data("id"));
+        await category.editItem($(e.target).data("id"));
+        
+        $('.select2').select2().trigger('change');
         $(ID_MODAL).modal("show");
     });
 

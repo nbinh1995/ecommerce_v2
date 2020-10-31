@@ -14,7 +14,7 @@ class CartList
     protected function arrayProductSizeAndProductID(): array
     {
         return array_map(function ($object) {
-            return [$object->product_id, $object->product_size_id];
+            return [$object->product_id, $object->product_attrs];
         }, $this->list);
     }
 

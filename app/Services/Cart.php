@@ -12,7 +12,7 @@ class Cart
     public string $product_image;
     public float $product_price;
     public int $product_amount;
-    public int $product_size_id;
+    public string $product_attrs;
     public float $product_total;
 
     public function __construct(array $input)
@@ -22,16 +22,18 @@ class Cart
         $this->product_image = $input['product_image'];
         $this->product_price = $input['product_price'];
         $this->product_amount = $input['product_amount'];
-        $this->product_size_id = $input['product_size_id'];
+        $this->product_attrs = $input['product_attrs'];
         $this->product_total = $input['product_amount'] * $input['product_price'];
     }
 
-    public function getNameSizeByID(object $sizes): ?string
+    public function getAttributeToString($attrs)
     {
-        foreach ($sizes as $size) {
-            if ($size->id == $this->product_size_id) {
-                return $size->name;
-            }
+        $attr_values_id = explode(',', $this->product_attrs);
+
+        foreach ($attr_values_id as $attr_value_id) {
+            $attr = $attrs->firstWhere('id', $attr_value_id);
+            $result[] = "<span class='tag-attr'><b>{$attr->attr_name}:</b> $attr->attr_value</span>";
         }
+        return implode(' ', $result);
     }
 }

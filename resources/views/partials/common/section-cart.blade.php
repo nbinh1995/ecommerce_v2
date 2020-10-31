@@ -15,7 +15,6 @@
                                 <th>Product</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
-                                <th>Size</th>
                                 <th>Total</th>
                                 <th>Remove</th>
                             </tr>
@@ -26,7 +25,7 @@
                                 <th>{{ $key +1}}</th>
                                 <td><img src="{{ $cart->product_image }}" alt="{{ $cart->product_name}}"
                                         style="width: 100px"></td>
-                                <td>{{ $cart->product_name}}</td>
+                                <td>{{ $cart->product_name}}<br>{!!$cart->getAttributeToString($attr_values)!!}</td>
                                 <td>{{ showCurrency('VND',$cart->product_price) }}</td>
                                 <td>
                                     <div class="input-group">
@@ -35,14 +34,13 @@
                                             onclick="btnPlus(this)">+</span>
                                         <input type="number" class="input-group__display qty"
                                             value="{{$cart->product_amount}}" min="1" data-id="{{$cart->product_id}}"
-                                            data-size="{{ $cart->product_size_id}}" />
+                                            data-size="{{ $cart->product_attrs}}" />
                                     </div>
                                 </td>
-                                <td>{{$cart->getNameSizeByID($sizes)}}</td>
                                 <td>{{ showCurrency('VND',$cart->product_total) }}</td>
                                 <td>
                                     <span class="btn-default remove-cart" data-id="{{$cart->product_id}}"
-                                        data-size="{{ $cart->product_size_id}}">X</span>
+                                        data-size="{{ $cart->product_attrs}}">X</span>
                                 </td>
                             </tr>
 

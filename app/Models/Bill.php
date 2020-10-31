@@ -32,6 +32,29 @@ class Bill extends Model
         return $this->hasMany(BillDetail::class, BillDetail::FOREIGN_KEY_BILL, self::PRIMARY_KEY_TABLE);
     }
 
+    public static function createBill($info_bill, $carts_list)
+    {
+        $bill = self::create($info_bill);
+
+        foreach ($carts_list as $cart) {
+            $info_bill_detail = [
+                'bill_id' => $bill->id,
+                'product_id' => $cart->product_id,
+                'price' => $cart->product_price,
+                'amount' => $cart->product_amount,
+                'total_detail' => $cart->product_total,
+            ];
+            $bill_detail = BillDetail::create($info_bill_detail);
+            $attrs_id = explode(',', $cart->product_attrs);
+            foreach ($attrs_id as $attr_id) {
+                BillDetailProductAttr::create([
+                    'bill_detail_id' => $bill_detail->id,
+                    'attribute_value_id' => $attr_id
+                ]);
+            }
+        }
+    }
+
     public static function getBillsPerOneDay()
     {
         return self::groupBy('date')
@@ -49,5 +72,10 @@ class Bill extends Model
     public static function getBillsByDay($date)
     {
         return self::whereDate('created_at', $date)->orderBy('id')->get();
+    }
+
+    public function getBillDetail()
+    {
+        return $this->load(['billDetails.product', 'billDetails.billDetailProductAttr'])->billDetails;
     }
 }

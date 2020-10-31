@@ -33,10 +33,10 @@
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="{{ route('dashboard.sizes')}}" class="nav-link">
+          <a href="{{ route('dashboard.attributes')}}" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Sizes Manager
+              Attributes Manager
             </p>
           </a>
         </li>

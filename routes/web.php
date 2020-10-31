@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group([
-    'namespace' => 'Pages'
+    'namespace' => 'Page'
 ], function () {
     Route::get('/', 'HomeController')->name('home');
 

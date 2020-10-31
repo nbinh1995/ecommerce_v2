@@ -5,7 +5,7 @@
     <td>{{ $product->category->name }}</td>
     <td>{{ $product->name }}</td>
     <td>{{ showCurrency('VND', $product->price)}}</td>
-    <td>{{ $product->toStringNew() }}</td>
+    <td>{!! $product->toHtmlNew() !!}</td>
     <td>
         <button class="btn btn-info edit" data-id="{{ $product->slug }}"><i class="far fa-edit"
                 style="pointer-events: none"></i></button>

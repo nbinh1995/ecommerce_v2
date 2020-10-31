@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BillDetail extends Model
 {
+    const PRIMARY_KEY_TABLE = 'id';
     const FOREIGN_KEY_PRODUCT = 'product_id';
     const FOREIGN_KEY_BILL = 'bill_id';
     const FOREIGN_KEY_SIZE = 'size_id';
@@ -30,9 +31,8 @@ class BillDetail extends Model
     {
         return $this->belongsTo(Product::class, self::FOREIGN_KEY_PRODUCT, Product::PRIMARY_KEY_TABLE);
     }
-
-    public function size()
+    public function billDetailProductAttr()
     {
-        return $this->belongsTo(Size::class, self::FOREIGN_KEY_SIZE, Size::PRIMARY_KEY_TABLE);
+        return $this->hasMany(BillDetailProductAttr::class, BillDetailProductAttr::FOREIGN_KEY_BILL_DETAIL, self::PRIMARY_KEY_TABLE);
     }
 }

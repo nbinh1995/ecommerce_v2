@@ -17,6 +17,20 @@
 <script src="{{asset("js/Script/lazyloading_home.js")}}"></script>
 <script src="{{asset("js/Script/slide.js")}}"></script>
 <script src="{{asset("js/cart.js")}}"></script>
+<script>
+    function setProductAttrs(){
+        let attrs = $(".attrs:checked");
+        let attrs_checked = [];
+        $.each(attrs, function( index, value ) {
+            attrs_checked.push($(value).val()); 
+        });
+        $("input[name = 'product_attrs']").val(attrs_checked.join(','));
+    }
+    setProductAttrs();
+    $(document).on('click','.attrs',(e)=>{
+        setProductAttrs();
+    });
+</script>
 
 @endpush
 

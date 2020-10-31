@@ -13,10 +13,10 @@ class CreateBillsTable extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('provider_id');
             $table->string('name');
             $table->string('email');
             $table->text('address');
@@ -27,9 +27,9 @@ class CreateBillsTable extends Migration
             $table->enum('status', ['Cancel', 'Pending', 'Confirmed', 'Completed'])->default('Pending');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -39,8 +39,6 @@ class CreateBillsTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('bills');
-        Schema::enableForeignKeyConstraints();
     }
 }

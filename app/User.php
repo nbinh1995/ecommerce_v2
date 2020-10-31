@@ -7,12 +7,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
     const PRIMARY_KEY_TABLE = 'id';
-
+    // const USER_ADMIN = 1;
     use SoftDeletes;
     use Notifiable;
 
@@ -44,10 +43,10 @@ class User extends Authenticatable
         'last_login_at' => 'datetime'
     ];
 
-    public function isAdmin()
-    {
-        return $this->is_admin == 1;
-    }
+    // public function isAdmin()
+    // {
+    //     return $this->is_admin == self::USER_ADMIN;
+    // }
 
     public function bills()
     {
