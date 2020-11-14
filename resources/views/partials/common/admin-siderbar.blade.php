@@ -115,6 +115,14 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item has-treeview">
+          <a href="{{ route('dashboard.media') }}" class="nav-link">
+            <i class="nav-icon fas fa-folder-open"></i>
+            <p>
+              Media Manager
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

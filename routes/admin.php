@@ -40,8 +40,6 @@ Route::group([
     // Route::get('email/verify/{id}', 'VerificationController@verify')->name('verification.verify');
     // Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
 });
-
-
 Route::group([
     'prefix' => 'dashboard',
     'middleware' => 'auth:admin'
@@ -76,6 +74,7 @@ Route::group([
         Route::get('/', 'CategoryController@index')->name('dashboard.categories');
         Route::get('/list', 'CategoryController@list')->name('dashboard.categories.list');
         Route::get('/create', 'CategoryController@create')->name('dashboard.categories.create');
+        Route::get('/{categoryID}/create-attribute-values', 'CategoryController@createAttrValuesForm')->name('dashboard.categories.createAttrValuesForm');
         Route::post('/', 'CategoryController@store')->name('dashboard.categories.store');
         Route::get('/{categorySlug}/edit', 'CategoryController@edit')->name('dashboard.categories.edit');
         Route::put('/{categorySlug}', 'CategoryController@update')->name('dashboard.categories.update');
@@ -94,13 +93,15 @@ Route::group([
 
     Route::group(['prefix' => 'products'], function () {
         Route::get('/', 'ProductController@index')->name('dashboard.products');
-        // Route::get('/list', 'ProductController@list')->name('dashboard.products.list');
-        Route::get('/create', 'ProductController@create')->name('dashboard.products.create');
+        Route::get('/{productSlug}/show-list-image', 'ProductController@listImage')->name('dashboard.products.listImage');
         Route::get('/search', 'SearchProductController')->name('dashboard.products.search');
+        Route::get('/create', 'ProductController@create')->name('dashboard.products.create');
         Route::post('/', 'ProductController@store')->name('dashboard.products.store');
+        Route::post('/{productID}/create-image', 'ProductController@createImage')->name('dashboard.products.createImage');
         Route::get('/{productSlug}/edit', 'ProductController@edit')->name('dashboard.products.edit');
         Route::put('/{productSlug}', 'ProductController@update')->name('dashboard.products.update');
         Route::delete('/{productSlug}', 'ProductController@destroy')->name('dashboard.products.destroy');
+        Route::delete('/{productImageID}/remove-image', 'ProductController@removeImage')->name('dashboard.products.removeImage');
     });
 
     Route::group(['prefix' => 'bills'], function () {
@@ -111,4 +112,11 @@ Route::group([
         Route::get('/{billDate}/bills-of-day', 'BillController@billsOfDay')->name('dashboard.bills.billsOfDay');
         Route::patch('/{billID}', 'BillController@update')->name('dashboard.bills.update');
     });
+
+    Route::get('/media-manager', 'MediaController')->name('dashboard.media');
+});
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth:admin']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });

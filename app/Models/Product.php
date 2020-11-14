@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -94,11 +96,29 @@ class Product extends Model
     public function getFullAttrNameValue(): array
     {
         $attrs = $this->getProductAttributes();
+        $attrs_values = [];
         foreach ($attrs as $attr) {
             $attrs_values["$attr->attr_name"] = $this->getAttributeValueByAttrID($attr->id);
         }
 
         return $attrs_values;
+    }
+
+    public function toHtmlFullAttrNameValue()
+    {
+        $product_attrs = $this->getFullAttrNameValue();
+        $html = '';
+        foreach ($product_attrs as $attr_name => $attr_values) {
+            $html .= "<span class='btn btn-xs btn-outline-secondary text-left mb-1'><b>{$attr_name}:</b><br>";
+            $arrayValue = [];
+            foreach ($attr_values as $attr_value) {
+                $arrayValue[] = $attr_value->attr_value;
+            }
+            $html .= implode(',', $arrayValue);
+            $html .= '</span><br>';
+        }
+
+        return $html;
     }
 
     public function toHtmlFullNameProduct($attr_values, $attrs)
@@ -109,5 +129,62 @@ class Product extends Model
             $result .= "<span class='btn btn-xs btn-outline-primary'><b>{$attr->attr_name}:</b> $attr->attr_value</span> ";
         }
         return $result;
+    }
+    protected static function dataRequest(Request $request): array
+    {
+        $data = [
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'price' => $request->price,
+            'category_id' => $request->category_id,
+            'meta_title' => $request->meta_title,
+            'is_new' => 0
+        ];
+
+        if ($request->slug) {
+            $data['slug'] = $request->slug;
+        }
+        if ($request->is_new) {
+            $data['is_new'] = 1;
+        }
+
+        if ($request->description) {
+            $data['description'] = $request->description;
+        }
+
+        return $data;
+    }
+
+    public static function createProduct(Request $request)
+    {
+        $data = self::dataRequest($request);
+
+        $product = Product::create($data);
+
+        if ($request->product_images) {
+            $images_path = explode(',', $request->product_images);
+            foreach ($images_path as $image_path) {
+                ProductImage::create(['product_id' => $product->id, 'path' => "$image_path"]);
+            }
+        }
+
+        if ($request->product_attrs_values) {
+            $attrs_values = $request->product_attrs_values;
+            $product->attributeValues()->sync($attrs_values);
+        }
+    }
+
+    public function updateProduct(Request $request)
+    {
+        $data = self::dataRequest($request);
+
+        $this->update($data);
+
+        if ($request->product_attrs_values) {
+            $attrs_values = $request->product_attrs_values;
+            $this->attributeValues()->sync($attrs_values);
+        } else {
+            $this->attributeValues()->detach();
+        }
     }
 }

@@ -36,8 +36,10 @@
                 </div>
                 <div class="card-body">
                     @if (Auth::user()->id == 1)
-                    <button class="btn btn-primary mb-2 create-admin"><i class="far fa-plus-square"
-                            style="pointer-events: none"></i></button>
+                    <div class="text-right">
+                        <button class="btn btn-primary mb-2 create-admin"><i class="far fa-plus-square"
+                                style="pointer-events: none"></i></button>
+                    </div>
                     @endif
                     <table class="table table-bordered" id="admin-table">
                         <thead>
@@ -77,8 +79,10 @@
                     <h3 class="card-title">Datatable Customer List</h3>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-primary mb-2 create"><i class="far fa-plus-square"
-                            style="pointer-events: none"></i></button>
+                    <div class="text-right">
+                        <button class="btn btn-primary mb-2 create"><i class="far fa-plus-square"
+                                style="pointer-events: none"></i></button>
+                    </div>
                     <table class="table table-bordered" id="customer-table">
                         <thead>
                             <tr>

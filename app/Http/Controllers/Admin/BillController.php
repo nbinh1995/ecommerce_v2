@@ -97,9 +97,11 @@ class BillController extends Controller
      * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bill $bill)
+    public function update(Request $request, Bill $billID)
     {
-        //
+        $billID->update($request->all());
+
+        return redirect()->back()->with('update_status', true);
     }
 
     /**

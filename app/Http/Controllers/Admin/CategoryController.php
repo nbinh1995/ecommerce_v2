@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\CategoryAttr;
+use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -44,6 +45,23 @@ class CategoryController extends Controller
     {
         $url = route('dashboard.categories.store');
         $html = view('partials.form.form-category', ['url' => $url, 'idForm' => 'form-create'])->render();
+
+        return response()->json(['html' => $html], 200);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createAttrValuesForm(Request $request, $categoryID)
+    {
+        $categoryAttrs = Category::find($categoryID)->getFullCategoryAttrs();
+        $product_attrs_values = [];
+        if ($request->productID) {
+            $product_attrs_values = Product::find($request->productID)->getFullAttrNameValue();
+        }
+        $html = view('partials.form.form-attribute_value', ['idForm' => 'form-create', 'categoryAttrs' => $categoryAttrs, 'product_attrs_values' => $product_attrs_values])->render();
 
         return response()->json(['html' => $html], 200);
     }

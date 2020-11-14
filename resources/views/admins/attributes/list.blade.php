@@ -37,8 +37,10 @@
                     <h3 class="card-title">Datatable Size List</h3>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-primary mb-2 create"><i class="far fa-plus-square"
-                            style="pointer-events: none"></i></button>
+                    <div class="text-right">
+                        <button class="btn btn-primary mb-2 create"><i class="far fa-plus-square"
+                                style="pointer-events: none"></i></button>
+                    </div>
                     <table class="table table-bordered" id="common-table">
                         <thead>
                             <tr>

@@ -34,6 +34,17 @@ class Category extends Model
         return $this->load('attrs')->attrs;
     }
 
+    public function getFullCategoryAttrs()
+    {
+        $attrs = $this->getCategoryAttrs();
+        $attrs_values = [];
+        foreach ($attrs as $attr) {
+            $attrs_values["$attr->attr_name"] = $attr->getAttrValues();
+        }
+
+        return $attrs_values;
+    }
+
     public function toStringCategoryAttrID(): string
     {
         $attrs = $this->getCategoryAttrs();
