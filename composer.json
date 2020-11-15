@@ -29,6 +29,7 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
+    "exclude-from-classmap": ["vendor\\unisharp\\laravel-filemanager\\src\\Lfm.php"],
     "extra": {
         "laravel": {
             "dont-discover": []
@@ -36,7 +37,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "UniSharp\\LaravelFilemanager\\": "unisharp/overrides/"
         },
         "classmap": [
             "database/seeds",
@@ -44,7 +46,7 @@
         ],
         "files": [
             "app/Helpers/helpers.php",
-            "app/Helpers/MainLfm.php"
+            "app/Helpers/Lfm.php"
         ]
     },
     "autoload-dev": {
