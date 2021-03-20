@@ -12,12 +12,14 @@
             <div class="col-xl-4 col-sm-6 padding-tb-sm slide">
                 <a
                     href="{{route('detail',['productSlug'=>$product->slug,'categorySlug'=>$product->getProductCategory()->slug])}}">
-                    <figure class="box-product">
-                        <img src="{{$product->getProductFirstImage()->path}}" alt="" />
-                        <h3 class="text-line"><a
+                    <figure class="box-product" style="height: 500px">
+                        <div style="with:100%;max-height:50%; overflow:hidden"><img
+                                src="{{$product->getProductFirstImage()->path}}" alt="" />
+                        </div>
+                        <h3 class="text-line" style="text-transform: capitalize"><a
                                 href="{{route('detail',['productSlug'=>$product->slug,'categorySlug'=>$product->getProductCategory()->slug])}}">{{$product->name}}</a>
                         </h3>
-                        <p class="text-line-camp">{{$product->description}}</p>
+                        <p class="text-line-camp">{!!$product->description!!}</p>
                         <p class="box-product__price">{{showCurrency('VND',$product->price)}}</p>
                     </figure>
                 </a>
